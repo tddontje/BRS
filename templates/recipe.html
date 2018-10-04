@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h3>Recipes</h3>
+
+<h4>All Recipes</h4>
+
+<div class="row onePadding">
+    <div class="col-md-12 col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Instructions</th>
+                </tr>
+                {% for recipe in recipes %}
+                    <tr>
+                        <td>{{recipe['name']}}</td>
+                        <td>{{recipe['category']}}</td>
+                        <td>{{recipe['amt']}}</td>
+                        <td>{{recipe['instructions']}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <a class="btn btn-primary btn-sm" href="{{url_for('page_add_recipe')}}">Add Recipe</a>
+    </div>
+</div>
+
+
+{% endblock %}

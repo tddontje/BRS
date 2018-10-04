@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+{% with infos = get_flashed_messages(category_filter=["info"]) %}
+
+    {% if infos %}
+        {% for message in infos %}
+
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            {{message}}
+        </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endwith %}
+
+<h2>About the Beer Recipe Application</h2>
+
+<p>This is a simple Beer Recipe application that provide both a web interface and a RESTful API to Create, Read,
+    Update and Delete Beer Recipes from an in memory object list. </p>
+
+<p>This is done as a small sample project that will be presented to GLG</p>
+
+{% endblock %}
