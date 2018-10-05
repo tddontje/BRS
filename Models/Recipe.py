@@ -86,28 +86,11 @@ class Recipe:
     #
 
     def serialize(self):
-        compacted_json = jsonld.compact({
-            "http://schema.org/id": str(self.id),
-            "http://schema.org/name": self.name,
-            "http://schema.org/category": self.category,
-            "http://schema.org/amt": self.amt,
-            "http://schema.org/targets": self.targets,
-            "http://schema.org/ingredients": self.ingredients,
-            "http://schema.org/instructions": self.instructions},
-            self.get_context())
+        return {"id": str(self.id),
+		"name": self.name,
+		"category": self.category,
+		"amt": self.amt,
+		"targets": self.targets,
+		"ingredients": self.ingredients,
+		"instructions": self.instructions}
 
-        return compacted_json
-
-
-    def get_context(self):
-        return {
-            "@context": {
-                "id": "http://schema.org/id",
-                "name": "http://schema.org/name",
-                "category": "http://schema.org/category",
-                "amt": "http://schema.org/amt",
-                "targets": "http://schema.org/targets",
-                "ingredients": "http://schema.org/ingredients",
-                "instructions": "http://schema.org/instructions",
-            }
-        }
